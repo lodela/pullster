@@ -1,0 +1,73 @@
+.loginPage{
+  height: 100%;
+  background: gray;
+  &:before{
+    position: absolute;
+    left: 0;
+    background: gray;
+    width: 100%;
+    height: calc(100% - 63px);
+    content: '';
+    display: block ;
+    background: lightblue url('../../../assets/images/xs_charger.jpg') no-repeat fixed center ;
+    background-size: cover;
+  }
+
+  .login{
+    &-card{
+      border:solid 1px white;
+      max-width: 400px;
+      width: 100%;
+      height: 400px;
+      position: absolute;
+      top: calc(50% - 200px);
+      left: calc(50% - 200px);
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 1px 1px 20px -1px rgba(255,255,255,1);
+      -webkit-box-shadow: 1px 1px 20px -1px rgba(255,255,255,1);
+      -moz-box-shadow: 1px 1px 20px -1px rgba(255,255,255,1);
+
+      .mat-card-title{
+        border:solid 1px white;
+        border-width: 0 0 1px 0;
+        text-align: center;
+        color: #1d497f;
+        padding: 0 0 14px 0;
+      }
+    }
+  }
+}
+
+.mat{
+  &-card{
+    &-content{
+      background: rgba(255,255,255,0.8);
+      padding: 10px 30px;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+    &-actions{
+      position:absolute;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      left: 0;
+      bottom: 80px;
+      justify-content: center;
+
+      button{
+        position: absolute;
+        width: 300px!important;
+        height: 45px;
+        min-width: unset!important;
+        left: 50px;
+      }
+    }
+  }
+  &-form{
+    &-field{
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+}

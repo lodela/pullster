@@ -1,0 +1,76 @@
+@import '../assets/scss_src/variables';
+
+.spacer {
+  flex: 1 1 auto;
+}
+.sideMenuContainer {
+  width: vh100px;
+  height: auto;
+  background-color: gray;
+}
+.mat-drawer{
+  overflow: visible;
+  background: rgba(255,255,255,0.9);
+}
+.sidenav {
+  min-width: 500px;
+  height: calc(100% - 90px);
+  margin: 63px 0 0 0;
+  padding: 20px 20px 0 20px;
+  border-width: 1px 1px 1px 0;
+  border-radius: 0 10px 10px 0;
+
+  &.white{
+    border:solid 1px white;
+    box-shadow: 1px 1px 20px -1px rgba(255,255,255,1);
+    -webkit-box-shadow: 1px 1px 20px -1px rgba(255,255,255,1);
+    -moz-box-shadow: 1px 1px 20px -1px rgba(255,255,255,1);
+  }
+  &.dark{
+    border:solid 1px $other-medium-gray;
+    box-shadow: 1px 1px 20px -1px $other-medium-gray;
+    -webkit-box-shadow: 1px 1px 20px -1px $other-medium-gray;
+    -moz-box-shadow: 1px 1px 20px -1px $other-medium-gray;
+
+    button{
+      &.mat-list-item{
+        &:hover{
+          background: rgba($other-medium-gray, 0.3);
+        }
+      }
+    }
+  }
+
+  button{
+    &.close{
+      position: absolute;
+      top: -10px;
+      right: -10px;
+    }
+    &.mat-list-item{
+      border:solid 1px gray;
+      border-width: 0 0 1px 0;
+
+      &:hover{
+        background: white;
+      }
+    }
+  }
+}
+.user{
+  position: relative;
+  right: 30px;
+  display: inline-flex;
+  vertical-align: middle;
+
+  .mat-icon{
+    &.logged{
+      position: absolute;
+      top: 5px;
+      right: -32px;
+      display: inline-flex;
+      vertical-align: middle;
+      color: white;
+    }
+  }
+}

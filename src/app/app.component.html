@@ -1,0 +1,52 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-mini-fab aria-label="Admin Section" (click)="toggleSideMenu()">
+      <mat-icon>manage_accounts</mat-icon>
+    </button>
+    <span class="spacer"></span>
+    <span>Charger {{title}}</span>
+    <span class="spacer"></span>
+    <span class=" user">Norberto <mat-icon class="logged" aria-hidden="false" aria-label="user verified">face</mat-icon></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="goto('/home')">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-menu-item (click)="goto('/home/pending')">
+        <mat-icon>sticky_note_2</mat-icon>
+        <span>Check pending polls</span>
+      </button>
+      <button mat-menu-item (click)="goto('/user')">
+        <mat-icon>fingerprint</mat-icon>
+        <span>My Data</span>
+      </button>
+      <button mat-menu-item (click)="goto('logout')">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-drawer #drawer class="sidenav" [class]="route == '/login' ? 'white' : 'dark'" mode="side">
+  <button mat-mini-fab color="dark" type="button" (click)="toggleSideMenu()" class="close">
+    <span class="material-icons">
+      close
+    </span>
+  </button>
+  <div mat-header>Admin Menu</div>
+  <mat-action-list>
+    <button mat-list-item *ngFor="let item of adminMenu" (click)="goto(item.goto)" [disabled]="item.disabled">
+      <mat-icon matListIcon>{{item.icon}}</mat-icon>
+      <h3 matLine> {{item.title}} </h3>
+      <p matLine>
+        <span> {{item.subject}} </span>
+        <span *ngIf="item.description"> :: {{item.description | json}} </span>
+      </p>
+    </button>
+  </mat-action-list>
+</mat-drawer>
+<mat-drawer-container autosize></mat-drawer-container>
+<router-outlet></router-outlet>

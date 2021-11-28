@@ -1,0 +1,26 @@
+@import './assets/custom-theme.scss';
+
+@import './assets/scss_src/variables';
+@import './assets/scss_src/mixins';
+@import './assets/scss_src/cards';
+@import './assets/scss_src/images';
+@import './assets/scss_src/typography';
+
+html, body { height: 100%; overflow: hidden; }
+
+.align{
+  &-left{
+    justify-content: flex-start;
+  }
+  &-center{
+    justify-content: center;
+  }
+  &-right{
+    justify-content: flex-end;
+  }
+}
+
+.card.card-upgrade .card-category {
+  max-width: 530px;
+  margin: 0 auto;
+}
