@@ -1,0 +1,13 @@
+<section class="full-width" *ngIf="'Multi choice' === q.type">
+  <mat-label>{{q.key}} *</mat-label>
+  <span class="list-section">
+    <ul>
+      <li *ngFor="let option of opts">
+        <mat-checkbox value="{{option.ID}}" name="{{option.OptionText}}"
+          (change)="selectedResponse($event)">
+          {{option.OptionText}}
+        </mat-checkbox>
+      </li>
+    </ul>
+  </span>
+</section>

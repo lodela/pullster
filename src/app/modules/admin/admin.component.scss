@@ -1,0 +1,64 @@
+.admin{
+  height: calc(100% - 64px);
+  background: url('../../../assets/images/xs_charger.jpg') no-repeat fixed center ;
+  background-size: cover;
+  position: relative;
+  display: block;
+
+  .main{
+    height: 100%;
+    padding-bottom: 40px;
+
+    background: #072251ad; /* Old browsers */
+    background: -moz-linear-gradient(top,  #072251d3 1%, #0e0e0ed3 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #072251d3 1%,#0e0e0ed3 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #072251d3 1%,#0e0e0ed3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#072251', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+
+    overflow-x: auto;
+  }
+
+  .container{
+    position: relative;
+    header{
+      color:white;
+      padding:20px 20px 0 20px;
+      margin: 0;
+      position: relative;
+      display: flex;
+
+      border:solid 1px white;
+      border-width: 0 0 1px 0;
+
+      .sub-title{
+        width: fit-content;
+
+        .mat-badge-content{
+          position: relative;
+          top: 9px;
+          right: -12px;
+          font-size: 16px;
+          padding: 3px;
+          height: 32px;
+          width: 32px;
+        }
+      }
+    }
+    .title{
+      &.no-responses{
+        color:white;
+        padding: 30px;
+        text-align: center;
+        font-size: 18px;
+      }
+    }
+  }
+  .notes-card{
+    width: 400px;
+    position:fixed;
+    top: calc(40% - 200px);
+    left: calc(50% - 200px);
+    background: none;
+  }
+}
+

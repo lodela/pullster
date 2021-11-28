@@ -1,1 +1,61 @@
-<p>survey works!</p>
+<div class="admin">
+  <div class="container-fluid main">
+    <div class="container">
+      <header class="header">
+        <div class="col col-12 col-sm-6">
+          <h1 class="title title-up m-0">{{title}}</h1>
+          <h2 class="sub-title" [matBadge]="countResults" matBadgeSize="large">Surveys</h2>
+        </div>
+        <div class="admin-card col col-12 col-sm-6 ">
+          <button mat-raised-button class="add right" (click)="onAddSurvey()">Add a new Survey</button>
+        </div>
+      </header>
+      <main class="survey">
+        <div class="col-3 card" ontouchstart="this.classList.toggle('hover');"
+          *ngFor="let survey of surveys; let i = index" [class]="survey.isDeleted ? 'd-none' : ''">
+          <div class="card-container">
+            <div class="front" style="background-image: url({{survey.image}})">
+              <div class="inner">
+                <p>{{survey.title}}</p>
+                <span>{{survey.subTitle}}</span>
+              </div>
+              <footer>
+                <div class="button-row">
+                  <div class="flex-container">
+                    <div class="button-container">
+                      <button mat-mini-fab color="primary" aria-label="Edit this survey" (click)="onEditSurvey(survey.id)">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                    </div>
+                    <div class="button-container">
+                      <button mat-mini-fab color="primary" aria-label="Recipients List" [matMenuTriggerFor]="menu">
+                        <mat-icon>contact_mail</mat-icon>
+                      </button>
+                      <mat-menu #menu="matMenu">
+                        <button mat-menu-item>Mty Team</button>
+                        <button mat-menu-item>Qro Team</button>
+                        <button mat-menu-item>Send to All</button>
+                        <mat-divider></mat-divider>
+                        <button mat-menu-item>Add Recipient</button>
+                      </mat-menu>
+                    </div>
+                    <div class="button-container">
+                      <button mat-mini-fab color="primary" aria-label="Survey Statistics">
+                        <mat-icon>query_stats</mat-icon>
+                      </button>
+                    </div>
+                    <div class="button-container">
+                      <button mat-mini-fab color="warn" aria-label="Delete Survey">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

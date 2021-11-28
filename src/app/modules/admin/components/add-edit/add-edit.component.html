@@ -1,0 +1,85 @@
+<div class="admin">
+  <div class="container-fluid main">
+    <div class="container">
+      <header>
+        <div class="col col-12 col-sm-6">
+          <h1 class="title title-up">{{id ? title.edit : title.add }}</h1>
+        </div>
+        <div class="col col-12 col-sm-6"></div>
+      </header>
+      <div class="row justify-content-md-center">
+        <div class="col col-8 col-xs-12">
+          <mat-card class="center">
+            <div class="surveys-form">
+              <form [formGroup]="surveyForm">
+                <mat-form-field class="full-width">
+                  <mat-label>Survey Title</mat-label>
+                  <input matInput formControlName="title" placeholder="Enter Survey Title">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <mat-label>Type</mat-label>
+                  <input matInput formControlName="type" placeholder="select">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <mat-label>isAnonymous</mat-label>
+                  <input matInput formControlName="isAnonymous" placeholder="boolean">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <mat-label>subTitle</mat-label>
+                  <input matInput formControlName="subTitle" placeholder="text">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <mat-label>intro</mat-label>
+                  <input matInput formControlName="intro" placeholder="introductory text">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <mat-label>buttonText</mat-label>
+                  <input matInput formControlName="buttonText" placeholder="text">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <mat-label>extraButton</mat-label>
+                  <input matInput formControlName="extraButton" placeholder="Boolean">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <mat-label>recipients</mat-label>
+                  <input matInput formControlName="recipients" placeholder="array">
+                </mat-form-field>
+                <ng-container formArrayName="questions">
+                  <ng-container *ngFor="let q of questions.controls; let i = index" [formGroupName]="i">
+                    <div class="form-row-questions">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Question {{i}}</mat-label>
+                        <input matInput formControlName="Text" placeholder="Write a question.">
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Type</mat-label>
+                        <input matInput formControlName="Type" placeholder="Type of question: from select">
+                      </mat-form-field>
+                      <!-- <mat-form-field appearance="fill">
+                        <mat-select formControlName="Type" placeholder="Lesson level">
+                          <mat-option *ngFor="let t of optionTypes" value="t.value">{{t.value}}</mat-option>
+                          <mat-option value="intermediate">Intermediate</mat-option>
+                          <mat-option value="advanced">Advanced</mat-option>
+                        </mat-select>
+                      </mat-form-field> -->
+                      <mat-icon class="delete-btn" (click)="deleteQuestion(i)">
+                        delete_forever
+                      </mat-icon>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </form>
+
+              <button mat-mini-fab>
+                <mat-icon class="add-course-btn" (click)="addQuestion()">add</mat-icon>
+              </button>
+
+            </div>
+          </mat-card>
+        </div>
+      </div>
+      <!-- {{survey | json}} -->
+    </div>
+  </div>
+</div>
+<p><------------------------------------------------></p>

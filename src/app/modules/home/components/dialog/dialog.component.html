@@ -1,0 +1,66 @@
+<h1 mat-dialog-title class="page-title title mb-2">Hi {{data.user.name}},</h1>
+<div mat-dialog-content>
+  <p>{{introMessage}}</p>
+  <section *ngIf="data.full;else fast">
+    <section class="full-width" *ngIf="'Multi choice' === this.data.survey!.responses![selected].type">
+      <mat-label>{{data.survey!.responses![selected].key}} *</mat-label>
+      <span class="list-section">
+        <ul>
+          <li *ngFor="let option of this.data.survey?.questions![selected].Options">
+            <mat-checkbox value="{{option.ID}}" name="{{option.OptionText}}" (change)="selectedResponse($event, this.data.survey?.questions![selected].Type)">
+              {{option.OptionText}}
+            </mat-checkbox>
+          </li>
+        </ul>
+      </span>
+    </section>
+    <section class="full-width" *ngIf="'Single choice' === this.data.survey!.responses![selected].type">
+      <mat-label>{{this.data.survey!.responses![selected].key}} *</mat-label>
+      <mat-radio-group [(ngModel)]="selectedValue" aria-label="Select an option" (change)="selectedResponse($event, this.data.survey?.questions![selected].Type)">
+        <span class="list-section">
+          <ul>
+            <li *ngFor="let option of this.data.survey?.questions![selected].Options">
+              <mat-radio-button value="{{option.ID}}" id="{{option.OptionText}}">
+                <a class="text-wrap">{{option.OptionText}}</a>
+              </mat-radio-button>
+            </li>
+          </ul>
+        </span>
+      </mat-radio-group>
+    </section>
+    <section *ngIf="'Text' === this.data.survey!.responses![selected].type">
+      <div class="response">
+        <mat-form-field appearance="standard" class="full-width">
+          <mat-label>{{this.data.survey!.responses![selected].key}} *</mat-label>
+          <input matInput autocomplete="off" (keyup)="onAnswer($event)">
+        </mat-form-field>
+      </div>
+    </section>
+  </section>
+  <ng-template #fast>
+    <div *ngFor="let resp of data.survey!.responses; let i = index" class="response">
+      <mat-form-field appearance="standard" class="full-width" *ngIf="'Text' === resp.type">
+        <mat-label>{{resp.key}} *</mat-label>
+        <input matInput [(ngModel)]="resp.value" #ctrl="ngModel" autocomplete="off" (keyup)="onAnswer($event, i)">
+      </mat-form-field>
+    </div>
+  </ng-template>
+  <mat-error>
+    <div *ngIf="allResponses">
+      All fields <strong>required</strong>.
+    </div>
+  </mat-error>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button (click)="next(true)" *ngIf="data.full && selected > 0">Back</button>
+  <button
+    mat-stroked-button
+    color="primary"
+    (click)="data.full ? next() : onSaveSurvey()"
+    cdkFocusInitial
+    [disabled]="isDisabled"
+  >
+    {{textBtn.msg}}
+  </button>
+
+</div>

@@ -1,0 +1,22 @@
+<article [class.highlighted]="active" [class]="vm.status">
+  <div class="col-2">
+    <img class="avatar">
+  </div>
+  <div class="col-6">
+    <p class="name">{{vm.name}} {{vm.lastName}}</p>
+  </div>
+  <div class="col-2">
+    <mat-icon
+      class="mat-18"
+      *ngFor="let tag of vm.tags"
+      [class]="vm.status"
+    >
+      {{tag}}
+    </mat-icon>
+  </div>
+  <div class="buttons">
+    <button mat-mini-fab color="primary" (click)="select()">
+      <mat-icon>edit_note</mat-icon>
+    </button>
+  </div>
+</article>

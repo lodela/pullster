@@ -6,5 +6,6 @@ import { environment } from 'src/environments/environment';
 })
 export class BaseService {
   apiUrl = environment.apiUrl;
+  ApiUrl = environment.ApiUrl;
   constructor() { }
 }

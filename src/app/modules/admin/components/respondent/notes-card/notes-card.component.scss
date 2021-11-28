@@ -1,0 +1,118 @@
+@import '../../../../../../assets/scss_src/variables';
+@import '../../../../../../assets/scss_src/mixins';
+.mat{
+  &-card{
+    &.user{
+      border:solid 1px white;
+      max-width: 400px;
+      width: 400px;
+      position:fixed;
+      top: calc(40% - 200px);
+      left: calc(50% - 200px);
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 1px 1px 20px -1px $medium-gray;
+      -webkit-box-shadow: 1px 1px 20px -1px $medium-gray;
+      -moz-box-shadow: 1px 1px 20px -1px $medium-gray;
+      transition: height 500ms cubic-bezier(0.35, 0, 0.25, 1);
+
+      button{
+        &.close{
+          position: absolute;
+          top:-13px;
+          right:-13px;
+          color: $input-color-placeholder;
+          background: $opacity-8;
+        }
+        &:hover{
+          background: $placeholder-gray;
+          color: $default-states-color;
+        }
+      }
+    }
+    &-title{
+      width: 100%;
+    }
+    &-avatar{
+      background-image: url('../../../../../../assets/img/default-avatar.png');
+      background-size: cover;
+      box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.2);
+    }
+    &-subtitle{
+      .healthy{
+        color: green;
+        font-weight: bold;
+        &-no{
+          color: red;
+        }
+      }
+    }
+    &-content{
+      h2{
+        color:red;
+        font-size: 16px;
+        margin: 0 0 0 6px;
+      }
+      h3{
+        color: black;
+        font-weight: bold;
+        margin: 0;
+      }
+      .notes{
+        max-height: 400px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        &-list{
+          padding: 0;
+          list-style-position: inside;
+          list-style: none;
+          counter-reset: item;
+          li{
+            position: relative;
+            border-radius: 4px;
+            background-color: #FFF;
+            padding: 24px;
+            margin-bottom: 16px;
+            counter-increment: item;
+            box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+            &:before{
+              content: counter(item);
+              position: absolute;
+              top: 0;
+              left: 0;
+              background: #d9d9d9;
+              border-radius: 4px 0;
+              color: rgba(0, 0, 0, 0.5);
+              width: 1.2em;
+              font-size: 14px;
+              padding: 3px;
+              text-align: center;
+              display: inline-block;
+            }
+            .poll-remove-btn{
+              position: absolute;
+              top: -10px;
+              right: -10px;
+            }
+            .note{
+              margin-left: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+  &-list{
+    padding: 0 0 10px 0;
+    border-width: 0 0 1px 0;
+    &-item{
+      height: 28px;
+      left: 16px;
+
+      .response{
+        font-weight: bold;
+        color: red;
+        padding-left: 10px;
+      }
+    }
+  }
+}

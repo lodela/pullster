@@ -1,0 +1,43 @@
+
+
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="search()" autocomplete="off">
+            <input type="text"
+                    name="emailSearch"
+                    class="form-control"
+                    [(ngModel)]="emailSearch" 
+                    (input)="keyPressed()"
+                    placeholder = "Enter an email address">
+        </form>
+    </div>
+</div>
+
+<ul *ngIf="showSuggestions" class="list-group">
+    <li *ngFor="let item of emailSuggestionList"  
+    class="list-group-item list-group-item-action"
+    (click)="addToTargetAudience(item.emailAddress)">
+        {{item.emailAddress}}
+    </li>
+</ul>
+
+{{allEmails}}
+
+<mat-form-field class="email-chip-list" appearance="fill">
+    <mat-label>Target Recipients</mat-label>
+    <mat-chip-list #chipList aria-label="Email selection">
+      <mat-chip
+        *ngFor="let email of targetAudience"
+        [selectable]="selectable"
+        [removable]="removable"
+        (removed)="remove(email)">
+        {{email}}
+        <button matChipRemove *ngIf="removable">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+     
+    </mat-chip-list>
+   
+</mat-form-field>
+

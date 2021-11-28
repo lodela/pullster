@@ -5,8 +5,11 @@
 export const environment = {
   production: false,
   environmentName: 'Local',
-  // apiUrl: 'https://localhost:44304/api'
-  apiUrl: 'https://localhost:3000/api'
+  //apiUrl: 'https://localhost:44304/api',
+
+  // This is the Norberto's local-port for Dev-DB (mock REST API).
+  ApiUrl: 'https://localhost:44304/api',
+  apiUrl: 'http://mty033:3000/api'
 };
 
 /*

@@ -36,6 +36,12 @@
       "@models/*": [
         "src/app/models/*"
       ],
+      "@img": [
+        "src/app/assets/img/*"
+      ],
+      "@assets": [
+        "src/app/assets/*"
+      ]
     }
   },
   "angularCompilerOptions": {

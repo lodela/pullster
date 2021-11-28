@@ -8,17 +8,19 @@ import { AdminComponent } from './admin.component';
 
 import * as fromComponents from './components';
 
+import { MaterialModule } from '@modules/material/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule, ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ],
   declarations: [
     AdminComponent,
-    fromComponents.components
+    fromComponents.components,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -26,3 +28,4 @@ import * as fromComponents from './components';
 
 })
 export class AdminModule { }
+

@@ -57,11 +57,36 @@
     }
   }
 }
+p{
+  &.user{
+    position: relative;
+    right: 15px;
+    display: inline-flex;
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0; padding: 0;
+
+    span{
+      padding: 0 0 0 10px;
+    }
+
+    .mat-icon{
+      &.logged{
+        position: absolute;
+        top: 5px;
+        right: -32px;
+        display: inline-flex;
+        vertical-align: middle;
+        color: white;
+      }
+    }
+  }
+}
 .user{
-  position: relative;
-  right: 30px;
-  display: inline-flex;
-  vertical-align: middle;
+  .name{
+    margin: solid 1px red;
+  }
 
   .mat-icon{
     &.logged{
@@ -73,4 +98,48 @@
       color: white;
     }
   }
+}
+.spinner_container{
+  border-radius: 10px;
+  height: calc(100% - 40px);
+  width: calc(100% - 40px);
+  top: 20px;
+  left: 20px;
+  right: 40px;
+  position: absolute;
+  z-index: 5;
+  background:rgba(rgb(50, 54, 50), 0.5);
+  border-radius: 10px;
+  height: calc(100% - 40px);
+  width: calc(100% - 40px);
+  top: 20px;
+  left: 20px;
+  right: 40px;
+  position: absolute;
+  z-index: 5;
+  border: solid 1px $other-medium-gray;
+  box-shadow: 0 0 8px 3px rgba(12, 50, 87, 0.5);
+  backdrop-filter: blur(6px);
+
+  .mat-spinner{
+    top: calc(50% - 50px);
+    // margin-top: calc(50% - 50px);
+    margin-left: calc(50% - 50px);
+    overflow: visible;
+
+    &:after {
+      content: "Loading... please wait!";
+      display: block;
+      position: absolute;
+      top: 120px;
+      width: 200px;
+      left: -50px;
+      text-align: center;
+      color: white;
+
+    }
+  }
+}
+.spinner_container ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: white;
 }

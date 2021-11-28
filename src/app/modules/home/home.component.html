@@ -1,8 +1,33 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <h1 class="title title-up">Hola Mundo</h1>
-      <h2>Home</h2>
+<div class="home">
+  <div class="container-fluid main">
+    <div class="container">
+      <header class="header">
+        <div class="col col-12 col-sm-6">
+          <h1 class="title title-up m-0">Home</h1>
+          <h2 class="sub-title" [matBadge]="pending" matBadgeSize="large">Pending Surveys</h2>
+        </div>
+      </header>
+      <main class="survey">
+        <div class="col-3 card" ontouchstart="this.classList.toggle('hover');" *ngFor="let survey of surveys; let i = index" [class]="visibleSurvey[i] ? 'visible' : 'd-none'">
+          <div class="card-container">
+            <div class="front" style="background-image: url({{survey.image}})">
+              <div class="inner">
+                <p>{{survey.title}}</p>
+                <span>{{survey.subTitle}}</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>{{survey.intro}}</p>
+              </div>
+              <footer>
+                <button mat-stroked-button (click)="takeSurvey(survey,i, false)" *ngIf="survey.extraButton">{{survey.extraButtonText}}</button>
+                <button mat-stroked-button color="primary" (click)="takeSurvey(survey,i,true)">{{survey.buttonText}}</button>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
   </div>
 </div>

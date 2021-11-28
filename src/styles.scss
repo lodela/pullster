@@ -1,5 +1,4 @@
 @import './assets/custom-theme.scss';
-
 @import './assets/scss_src/variables';
 @import './assets/scss_src/mixins';
 @import './assets/scss_src/cards';
@@ -18,6 +17,10 @@ html, body { height: 100%; overflow: hidden; }
   &-right{
     justify-content: flex-end;
   }
+}
+
+.center{
+  margin: 0 auto !important;
 }
 
 .card.card-upgrade .card-category {

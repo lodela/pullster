@@ -1,0 +1,43 @@
+<mat-card class="user">
+  <button mat-mini-fab class="close" (click)="onSave()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>{{vm.name}} {{vm.lastName}} {{vm.status}}</mat-card-title>
+    <mat-card-subtitle>General Heald Status: <span [ngClass]="vm.status == 'Ok' ? 'healthy' : 'healthy-no'">{{vm.status | titlecase }}</span></mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="row" *ngIf="vm.status !== 'Ok'">
+      <h2 class="title" [ngClass]="vm.status == 'Ok' ? 'healthy' : 'healthy-no'">Attention:</h2>
+      <mat-list>
+        <div *ngFor="let w of vm.wrong">
+          <h3 mat-subheader class="title">{{w.key}}</h3>
+          <mat-list-item *ngFor="let v of w.value.split(',')"> <span class="response">{{v}}</span> </mat-list-item>
+        </div>
+      </mat-list>
+    </div>
+    <div class="row">
+      <mat-form-field>
+        <mat-label>Write a note:</mat-label>
+        <textarea matInput [(ngModel)]="newNote"></textarea>
+        <button color="primary" mat-button matSuffix aria-label="save" (click)="addNewNote()">
+          <mat-icon>save</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class=" col notes">
+        <h3 class="title" *ngIf="">Notes:</h3>
+        <ol class="notes-list">
+          <li *ngFor="let note of vm.notes; let i = index">
+            <div class="note">
+              <p>{{note.by}} wrote: <span class="date">{{note.date}}</span></p>
+              <p>{{note.note}}</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,1 +1,34 @@
-<p>admin works!</p>
+<div class="admin">
+  <div class="container-fluid main">
+    <div class="container">
+      <header>
+        <div class="col col-12 col-sm-6">
+          <h1 class="title title-up">Surveys Tracker</h1>
+          <h2 class="sub-title" [matBadge]="countResults" matBadgeSize="large">Respondents</h2>
+        </div>
+        <div class="col col-12 col-sm-6">
+          Admin card here...
+        </div>
+      </header>
+      <div class="row">
+        <div class="col-12 col-sm-12">
+          <h2 class="title no-responses" *ngIf="!countResults">No responses yet...</h2>
+          <app-respondent
+            *ngFor="let user of users"
+            [vm]="user"
+            [active]="selectedUser?.id === user.id"
+            (selected)="selectUser(user)">
+            loading...
+          </app-respondent>
+        </div>
+      </div>
+      <app-notes-card
+        *ngIf="showCard"
+        [vm]="selectedUser"
+        (save)="save($event)"
+        class="notes-card">
+      </app-notes-card>
+    </div>
+  </div>
+</div>
+
